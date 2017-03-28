@@ -13,7 +13,6 @@ def place_ship(table, ship_dict, player):
     blank_page(player)
     print('#' * 80, '\nThis is the ship placement phase for {}!\n'.format(player), '#' * 79, '\n')
     reset_ship_dict()
-    #  print(ship_dict)
     current_ship = ''
     ship_length = 0
     ships_left = 2  # 7
@@ -46,22 +45,22 @@ def place_ship(table, ship_dict, player):
         for i in options:
             if direction == i[0]:
                 # UP
-                if direction == 'UP' or direction == 'u':
+                if direction == 'UP':
                     for j in range(i[3], i[2]):
                         table[j][i[1]] = 'X'
                     draw_table(table)
                 # DOWN
-                if direction == 'DOWN' or direction == 'd':
+                if direction == 'DOWN':
                     for j in range(i[2], i[3]):
                         table[j][i[1]] = 'X'
                     draw_table(table)
                 # LEFT
-                if direction == 'LEFT' or direction == 'l':
+                if direction == 'LEFT':
                     for j in range(i[3], i[2]):
                         table[i[1]][j] = 'X'
                     draw_table(table)
                 # RIGHT
-                if direction == 'RIGHT' or direction == 'r':
+                if direction == 'RIGHT':
                     for j in range(i[2], i[3]):
                         table[i[1]][j] = 'X'
                     draw_table(table)
