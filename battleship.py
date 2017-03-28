@@ -1,17 +1,8 @@
-from create_table_func import *
 from intro_func import *
 import sys
 from battle_func import *
-from blank_page_func import *
 from choose_winner_func import *
-from count_x_func import *
-from draw_table_func import *
 from place_ship_func import *
-from placement_options_check_func import *
-from reset_ship_dict_func import *
-from rules_func import *
-from shoot_func import *
-from target_func import *
 
 ####################
 # global variables #
