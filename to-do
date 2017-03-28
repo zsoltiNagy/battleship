@@ -1,14 +1,23 @@
-1. szétszedni funkciókra
-2. repo
-3. specifikáció - új funkciók(flowchart)
+1. DONE szétszedni funkciókra
+2. DONE repo
+3. DONE specifikáció - új funkciók
 	- hajó süllyedés
 	- új játék, pontokkal
 	- egyszerűbb bevitel
 	- clear funkció
-4. flowchart
-5. javítások
-6. flowchart
+4. flowchart -HOMEWORK 
+	Annabell:
+		intro_func
+		battle_func
+		other_minor_func
+	Zsolti:
+		battleship
+		palce_ship_func
+		choose_winner_func
+5. SZERDA - javítások
+6. SZERDA - flowchart a javított battleshipről
 7. felosztani a feladatokat
-8. implementáció
+8. flochart az új funkciókról
+9. implementáció
 
 doksi kérdésekkel, problémákkal

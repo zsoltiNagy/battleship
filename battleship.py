@@ -1,18 +1,8 @@
 from intro_func import *
-import sys
+# import sys
 from battle_func import *
 from choose_winner_func import *
 from place_ship_func import *
-
-####################
-# global variables #
-####################
-
-
-################
-# player names #
-################
-
 
 
 ###############
@@ -28,6 +18,7 @@ def game_engine():
         battle(player_2, table_2, table_1)
         turn += 1
     choose_winner(table_1, table_2)
+
 
 if __name__ == "__main__":
     game_engine()

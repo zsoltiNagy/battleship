@@ -11,7 +11,7 @@ ship_dict = {
 
 def place_ship(table, ship_dict, player):
     blank_page(player)
-    print('#'*80, '\nThis is the ship placement phase for {}!\n'.format(player), '#'*79, '\n')
+    print('#' * 80, '\nThis is the ship placement phase for {}!\n'.format(player), '#' * 79, '\n')
     reset_ship_dict()
     #  print(ship_dict)
     current_ship = ''
@@ -24,7 +24,7 @@ def place_ship(table, ship_dict, player):
             if ship_dict[ship][1] > 0:
                 print('\nYou still got {} {} ({}) left!\n'.format(ship_dict[ship][1],
                                                                   ship,
-                                                                  'X'*ship_dict[ship][0]))
+                                                                  'X' * ship_dict[ship][0]))
                 current_ship = ship
                 ship_length = ship_dict[ship][0]
                 ship_dict[ship][1] -= 1
@@ -93,13 +93,13 @@ def placement_options_check(let, num, ship_length, table):
     if e <= 9:
         down = True
     try:
-        for i in range(s+1, e):
+        for i in range(s + 1, e):
             if table[i][let] != '~':
                 down = False
     except IndexError:
         pass
     if down:
-        options.append(['DOWN', let, s, e+1])
+        options.append(['DOWN', let, s, e + 1])
 
     # LEFT
     left = False
@@ -120,13 +120,13 @@ def placement_options_check(let, num, ship_length, table):
     if e <= 9:
         right = True
     try:
-        for i in range(s+1, e):
+        for i in range(s + 1, e):
             if table[num][i] != '~':
                 right = False
     except IndexError:
         pass
     if right:
-        options.append(['RIGHT', num, s, e+1])
+        options.append(['RIGHT', num, s, e + 1])
 
     return options
 
@@ -165,4 +165,4 @@ def target(ship_length, table):
             return let, num
 
         else:
-            print('\nThere is not enough space for this ship...\n')        
+            print('\nThere is not enough space for this ship...\n')

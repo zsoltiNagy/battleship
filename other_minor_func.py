@@ -31,7 +31,7 @@ def draw_table(table, *player):
     str_abc = ''
     str_abc = ' '.join(abc)
 
-    print('      ', str_abc, '\n', ' '*50)
+    print('      ', str_abc, '\n', ' ' * 50)
 
     str_table = ''
     str_table_list = []
@@ -46,6 +46,5 @@ def draw_table(table, *player):
         str_table_list.append(str_table)
 
     for i in range(1, 10):
-        print('  ', i, ' ', str_table_list[i-1])
+        print('  ', i, ' ', str_table_list[i - 1])
     print(' ', 10, ' ', str_table_list[9], '\n\n')
-    

@@ -1,8 +1,15 @@
 import sys
 
+####################
+# global variables #
+####################
 abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 table_1 = []
 table_2 = []
+
+################
+# player names #
+################
 if len(sys.argv) == 3:
     player_1 = sys.argv[1]
     player_2 = sys.argv[2]
