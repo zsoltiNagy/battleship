@@ -1,3 +1,6 @@
+from globals import *
+
+
 def choose_winner(table_1, table_2):
     if count_x(table_1) > count_x(table_2):
         print('Player 1 won!')
@@ -6,3 +9,11 @@ def choose_winner(table_1, table_2):
     else:
         print('Draw!')
 
+
+def count_x(table):
+    num = 0
+    for i in table:
+        for j in i:
+            if j == 'X':
+                num += 1
+    return num
