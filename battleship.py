@@ -1,17 +1,17 @@
+from create_table_func import *
+from intro_func import *
 import sys
-from battle import battle
-from blank_page import blank_page
-from choose_winner import choose_winner
-from count_x import count_x
-from create_table import create_table
-from draw_table import draw_table
-from intro import intro
-from place_ship import place_ship
-from placement_options_check import placement_options_check
-from reset_ship_dict import reset_ship_dict
-from rules import rules
-from shoot import shoot
-from target import target
+from battle_func import *
+from blank_page_func import *
+from choose_winner_func import *
+from count_x_func import *
+from draw_table_func import *
+from place_ship_func import *
+from placement_options_check_func import *
+from reset_ship_dict_func import *
+from rules_func import *
+from shoot_func import *
+from target_func import *
 
 ####################
 # global variables #
@@ -20,6 +20,7 @@ from target import target
 abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 table_1 = []
 table_2 = []
+
 ship_dict = {
     "Carrier": [5, 1],
     "Battleship": [4, 1],
@@ -52,4 +53,5 @@ def game_engine():
         turn += 1
     choose_winner(table_1, table_2)
 
-game_engine()
+if __name__ == "__main__":
+    game_engine()

@@ -1,5 +1,6 @@
-from create_table import create_table
-from battleship import table_1, table_2
+from battleship import *
+from create_table_func import *
+from rules_func import *
 
 
 def intro():
