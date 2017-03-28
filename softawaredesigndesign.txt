@@ -1,0 +1,12 @@
+Specifikáció
+Flowchart
+Munkafelosztás
+Implementáció --> probléma --> megoldás --> doksi
+Tesztelés
+Közös kódtisztítás és kód újraírás
+Tesztelés
+A majdnem befejezett munka felett érzett öröm
+Prezentáció megtervezése
+Előadás
+Retro
+
