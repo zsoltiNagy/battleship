@@ -37,6 +37,7 @@ def draw_table(table, *player):
 
     for i in table:  # we should name this more accuretally
         str_table = ''.join(i)
+        str_table = list(str_table)
         for j in str_table:
             if not print_ship_pos and j == 'X':  # thats how wo make X disappear
                 str_table[str_table.index(j)] = '~'
