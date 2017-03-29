@@ -11,9 +11,4 @@ def choose_winner(table_1, table_2):  # how can we make this smaller?
 
 
 def count_x(table):
-    num = 0   # list comprehension it!
-    for i in table:
-        for j in i:
-            if j == 'X':
-                num += 1
-    return num
+    return sum([i.count('X') for i in table])
