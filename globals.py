@@ -8,11 +8,21 @@ abc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 table_1 = []
 table_2 = []
 
-ship_dict = {  # rewrite!
+old_ship_dict = {  # rewrite!
     "Carrier": [5, 1],
     "Battleship": [4, 1],
     "Cruiser": [3, 2],
     "Destroyer": [2, 3]
+}
+
+ship_dict = {
+    "Carrier": 5,
+    "Battleship": 4,
+    "Cruiser_1": 3,
+    "Cruiser_2": 3,
+    "Destroyer_1": 2,
+    "Destroyer_2": 2,
+    "Destroyer_3": 2,
 }
 
 ################

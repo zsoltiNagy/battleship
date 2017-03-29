@@ -5,22 +5,25 @@ from other_minor_func import *
 def place_ship(table, ship_dict, player):
     blank_page(player)
     print('\nThis is the ship placement phase for {}!\n'.format(player).center(80, '#'))
-    ship_dict_local = ship_dict.copy()
+    alt_ship_dict = ship_dict.copy()
     ships_left = 2  # 7 is original value, this should be maybe like a global value, so it would be easier to change
-    draw_table(table)
+    # draw_table(table)
     while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
-        print("Ships you can place: ", ships_left)
-        for ship in ship_dict_local:  # THINK ABOUT THIS A LITTLE BIT
-            if ship_dict_local[ship][1] > 0:
-                print('\nYou still got {} {} ({}) left!\n'.format(ship_dict_local[ship][1],
-                                                                  ship,
-                                                                  'X' * ship_dict_local[ship][0]))
-                current_ship = ship
-                ship_length = ship_dict_local[ship][0]
-                ship_dict_local[ship][1] -= 1
-                break
+        print('These ships are still in your pool:')
+        for ship in alt_ship_dict:
+            print(ship, 'X' * alt_ship_dict[ship])
+        print("\nYou can still place {} of 'em.".format(ships_left))
+        for ship in alt_ship_dict:
+            print('Now you have to place your {}'.format(ship))
+            current_ship = ship
+            ship_length = alt_ship_dict[ship]
+            del alt_ship_dict[ship]
+            break
+        input()
+        draw_table(table)
 
         let, num = place_first_part_of_ship(ship_length, table)  # we place the first dot here
+        # ships_on_board[table] = [current_ship, ship_length, num, let]
         options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
         dir_list = []  # we will fill this list with option names (like 'UP', 'DOWN', etc)
         direction = ''  # we will ask the user to input something to this string
@@ -32,11 +35,7 @@ def place_ship(table, ship_dict, player):
 
         while direction not in dir_list:  # till we get the right input
             direction = input('> ')  # we prompt the user for one
-        print('options', options)
-        print('dir_list', dir_list)
         for i in options:  # we iterate through our über-list again
-            print('i', i)
-            print('direction', direction)
             if direction == i[0]:  # leaving this line out causes a strange bug, WTF
                 if i[0] == 'UP':
                     draw_ship(table, i[3], i[2], i[1], True)
