@@ -1,20 +1,10 @@
 from globals import *
+from ASCII_art import blank_page_art
 
 
 def blank_page(player):  # we should replace this THING with the clear func
     print("\n" * 40)
-    print("""
-                                     # #  ( )
-                                  ___#_#___|__
-                              _  |____________|  _
-                       _=====| | |            | | |==== _
-                 =====| |.---------------------------. | |====
-   <--------------------'   .  .  .  .  .  .  .  .   '--------------/
-     \                                                             /
-      \___________________________________________________________/
-  wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-   wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww """)
+    blank_page_art()
     c = input("\nThis is {}'s turn. \nPress any key to continue...\n> ".format(player).center(40, 'w'))
     print(c)
     print("\n" * 40)
@@ -44,6 +34,9 @@ def draw_table(table, *player):
         str_table = ' '.join(str_table)  # to make our output nice
         str_table_list.append(str_table)
 
-    for i in range(1, 10):  # we need a more elegant solution with rjust
-        print('  ', i, ' ', str_table_list[i - 1])
-    print(' ', 10, ' ', str_table_list[9], '\n\n')
+    width = 80
+    for i in range(1, 10):
+        print("{0:>{3}}{1:>{3}}{2:>{3}}".format(i, ' ', str_table_list[i - 1], width))
+ #   for i in range(1, 10):  # we need a more elegant solution with rjust
+ #       print('  ', i, ' ', str_table_list[i - 1])
+ #   print(' ', 10, ' ', str_table_list[9], '\n\n')

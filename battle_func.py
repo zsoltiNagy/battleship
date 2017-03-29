@@ -1,12 +1,13 @@
 from globals import *
 from other_minor_func import *
+from ASCII_art import ship_hit_art
 
 
 def battle(player, player_table, opponent_table):
     blank_page(player)
-    print(' ', '#' * 30, '\nThis is the opponents table\n', '#' * 29)  # rjust!
+    print("\nThis is the opponent's table\n".center(90, '#'))
     draw_table(opponent_table, player)
-    print(' ', '#' * 19, '\nThis your table\n', '#' * 19)  # rjust!
+    print("\nThis is your table\n".center(80, '#'))
     draw_table(player_table, player)
     shoot(opponent_table)
     draw_table(opponent_table, player)
@@ -36,13 +37,7 @@ def shoot(table):
     print(let, num)
     if table[num][let] == 'X':
         table[num][let] = 'H'
-        pic = """
-                         /\ 
-                        /  \ 
-                        \   \__
-            _            \   \o\ 
-           |_0            \   \o\=
-~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"""  # put every ascii_art into seperate file
+        ship_hit_art()
     elif table[num][let] == '~':
         table[num][let] = 'O'
-    # print(pic)
+    print(ship_hit_art)

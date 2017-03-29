@@ -2,11 +2,13 @@ from intro_func import *
 from battle_func import *
 from choose_winner_func import *
 from place_ship_func import *
-
+from ASCII_art import *
 
 ###############
 # game engine #
 ###############
+
+
 def game_engine():
     intro()
     place_ship(table_1, ship_dict, player_1)
