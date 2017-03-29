@@ -36,7 +36,4 @@ def draw_table(table, *player):
 
     width = 80
     for i in range(1, 10):
-        print("{0:>{3}}{1:>{3}}{2:>{3}}".format(i, ' ', str_table_list[i - 1], width))
- #   for i in range(1, 10):  # we need a more elegant solution with rjust
- #       print('  ', i, ' ', str_table_list[i - 1])
- #   print(' ', 10, ' ', str_table_list[9], '\n\n')
+        print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
