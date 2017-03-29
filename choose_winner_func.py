@@ -1,7 +1,7 @@
 from globals import *
 
 
-def choose_winner(table_1, table_2):
+def choose_winner(table_1, table_2):  # how can we make this smaller?
     if count_x(table_1) > count_x(table_2):
         print('Player 1 won!')
     elif count_x(table_1) < count_x(table_2):
@@ -11,7 +11,7 @@ def choose_winner(table_1, table_2):
 
 
 def count_x(table):
-    num = 0
+    num = 0   # list comprehension it!
     for i in table:
         for j in i:
             if j == 'X':

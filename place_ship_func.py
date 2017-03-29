@@ -1,25 +1,16 @@
 from globals import *
 from other_minor_func import *
 
-ship_dict = {
-    "Carrier": [5, 1],
-    "Battleship": [4, 1],
-    "Cruiser": [3, 2],
-    "Destroyer": [2, 3]
-}
-
 
 def place_ship(table, ship_dict, player):
     blank_page(player)
-    print('#' * 80, '\nThis is the ship placement phase for {}!\n'.format(player), '#' * 79, '\n')
-    reset_ship_dict()
-    current_ship = ''  # both of em are basically None
-    ship_length = 0
+    print('#' * 80, '\nThis is the ship placement phase for {}!\n'.format(player), '#' * 79, '\n')  # rjust this pice of shit
+    reset_ship_dict()  # replace it with copy
     ships_left = 2  # 7 is original value, this should be maybe like a global value, so it would be easier to change
     draw_table(table)
     while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
         print("Ships you can place: ", ships_left)
-        for ship in ship_dict:
+        for ship in ship_dict:  # THINK ABOUT THIS A LITTLE BIT
             if ship_dict[ship][1] > 0:
                 print('\nYou still got {} {} ({}) left!\n'.format(ship_dict[ship][1],
                                                                   ship,
