@@ -29,7 +29,7 @@ def intro():
 |                                                                     BB-61/
  \_________________________________________________________________________|
 
-""".center(80, ' '))
+""".center(80, ' '))  # put ascii_art into seperate file
     print("Welcome {} and {}!".format(player_1, player_2).center(80, ' '))
     rules()
     input()
@@ -39,8 +39,7 @@ def create_table(table):
     """
     Obviously its a function that creates tables.
     """
-    for i in abc:
-        i = []
+    for i in abc:  # list comprehension!
         i = ['~'] * 10
         table.append(i)
 

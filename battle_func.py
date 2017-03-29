@@ -4,9 +4,9 @@ from other_minor_func import *
 
 def battle(player, player_table, opponent_table):
     blank_page(player)
-    print(' ', '#' * 30, '\nThis is the opponents table\n', '#' * 29)
+    print(' ', '#' * 30, '\nThis is the opponents table\n', '#' * 29)  # rjust!
     draw_table(opponent_table, player)
-    print(' ', '#' * 19, '\nThis your table\n', '#' * 19)
+    print(' ', '#' * 19, '\nThis your table\n', '#' * 19)  # rjust!
     draw_table(player_table, player)
     shoot(opponent_table)
     draw_table(opponent_table, player)
@@ -33,7 +33,6 @@ def shoot(table):
     let = int(abc.index(let))
     num -= 1
 
-    pic = ''
     print(let, num)
     if table[num][let] == 'X':
         table[num][let] = 'H'
@@ -43,7 +42,7 @@ def shoot(table):
                         \   \__
             _            \   \o\ 
            |_0            \   \o\=
-~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"""
+~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"""  # put every ascii_art into seperate file
     elif table[num][let] == '~':
         table[num][let] = 'O'
-    print(pic)
+    # print(pic)

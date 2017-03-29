@@ -1,5 +1,4 @@
 from intro_func import *
-# import sys
 from battle_func import *
 from choose_winner_func import *
 from place_ship_func import *
@@ -20,5 +19,5 @@ def game_engine():
     choose_winner(table_1, table_2)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # michael scott will be always remembered!
     game_engine()
