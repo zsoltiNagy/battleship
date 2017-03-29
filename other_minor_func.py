@@ -35,5 +35,5 @@ def draw_table(table, *player):
         str_table_list.append(str_table)
 
     width = 80
-    for i in range(1, 10):
+    for i in range(1, 11):
         print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
