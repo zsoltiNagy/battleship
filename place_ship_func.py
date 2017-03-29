@@ -32,104 +32,92 @@ def place_ship(table, ship_dict, player):
 
         while direction not in dir_list:  # till we get the right input
             direction = input('> ')  # we prompt the user for one
-
+        print('options', options)
+        print('dir_list', dir_list)
         for i in options:  # we iterate through our über-list again
+            print('i', i)
+            print('direction', direction)
             if direction == i[0]:  # leaving this line out causes a strange bug, WTF
-                # here we check what is the input and draw a lot of X to that direction as long as ship-length(x)
-                # its redundant as hell of course
-                # a clever for-loop would be nice
-                # though maybe we have to redesign this whole process
-                # UP
-                if direction == 'UP':
-                    for j in range(i[3], i[2]):
-                        table[j][i[1]] = 'X'
-                    draw_table(table)  # I think it's enough to put this line once on the end of this mess
-                # DOWN
-                if direction == 'DOWN':
-                    for j in range(i[2], i[3]):
-                        table[j][i[1]] = 'X'
-                    draw_table(table)
-                # LEFT
-                if direction == 'LEFT':
-                    for j in range(i[3], i[2]):
-                        table[i[1]][j] = 'X'
-                    draw_table(table)
-                # RIGHT
-                if direction == 'RIGHT':
-                    for j in range(i[2], i[3]):
-                        table[i[1]][j] = 'X'
-                    draw_table(table)
+                if i[0] == 'UP':
+                    draw_ship(table, i[3], i[2], i[1], True)
+                if i[0] == 'DOWN':
+                    draw_ship(table, i[2], i[3], i[1], True)
+                if i[0] == 'LEFT':
+                    draw_ship(table, i[3], i[2], i[1], False)
+                if i[0] == 'RIGHT':
+                    draw_ship(table, i[2], i[3], i[1], False)
+                draw_table(table)
         ships_left -= 1
     input()
     return table
 
 
 def check_placement_options(let, num, ship_length, table):
-    x = ship_length - 1  # why? maybe cause we already place an X in target() ...
+    x = ship_length - 1
     options = []
 
-    # this is redundant as hell
+    # this is redundant as hell and a function nightmare
     # UP
-    up = False  # an empty variable is False too
-    s = num  # up-down duplicate
-    e = num - x  # also we will need better variable names
-    if e >= 0:
+    up = False
+    start = num - x
+    end = num
+    if start >= 0:
         up = True
-    for i in range(e, s):
+    for i in range(start, end):
         if table[i][let] != '~':
             up = False
     if up:
-        options.append(['UP', let, s, e])
+        options.append(['UP', let, end, start])
 
     # DOWN
     down = False
-    s = num
-    e = num + x
-    if e <= 9:
+    start = num
+    end = num + x
+    if end <= 9:
         down = True
     try:
-        for i in range(s + 1, e):
+        for i in range(start + 1, end):
             if table[i][let] != '~':
                 down = False
     except IndexError:
         pass
     if down:
-        options.append(['DOWN', let, s, e + 1])
+        options.append(['DOWN', let, start, end + 1])
 
     # LEFT
     left = False
-    s = let
-    e = let - x
-    if e >= 0:
+    end = let
+    start = let - x
+    if start >= 0:
         left = True
-    for i in range(e, s):
+    for i in range(start, end):
         if table[num][i] != '~':
             left = False
     if left:
-        options.append(['LEFT', num, s, e])
+        options.append(['LEFT', num, end, start])
 
     # RIGHT
     right = False
-    s = let
-    e = let + x
-    if e <= 9:
+    start = let
+    end = let + x
+    if end <= 9:
         right = True
     try:
-        for i in range(s + 1, e):
+        for i in range(start + 1, end):
             if table[num][i] != '~':
                 right = False
     except IndexError:
         pass
     if right:
-        options.append(['RIGHT', num, s, e + 1])
+        options.append(['RIGHT', num, start, end + 1])
 
     return options
 
 
-def place_first_part_of_ship(ship_length, table):  # we will need a more accurate name for this one
-    while True:  # we need to do this to let the user make mistakes
-        print('Choose your starting coordinates!\n')  # we need a more user-friendly solution for this
-        let = ''  # let my hand rot if I name a variable like this again
+def place_first_part_of_ship(ship_length, table):
+    while True:
+        print('Choose your starting coordinates!\n')
+        let = ''
         while let not in abc:
             let = input('Vertical position (A-J): ')
 
@@ -152,3 +140,12 @@ def place_first_part_of_ship(ship_length, table):  # we will need a more accurat
             return let, num
         else:
             print('\nThere is not enough space for this ship...\n')
+
+
+def draw_ship(table, range_start, range_end, stable_coordinate, ver=True):
+    for j in range(range_start, range_end):
+        if ver:
+            table[j][stable_coordinate] = 'X'
+        else:
+            table[stable_coordinate][j] = 'X'
+    return table
