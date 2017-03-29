@@ -4,24 +4,24 @@ from other_minor_func import *
 
 def place_ship(table, ship_dict, player):
     blank_page(player)
-    print('#' * 80, '\nThis is the ship placement phase for {}!\n'.format(player), '#' * 79, '\n')  # rjust this pice of shit
-    reset_ship_dict()  # replace it with copy
+    print('\nThis is the ship placement phase for {}!\n'.format(player).center(80, '#'))
+    ship_dict_local = ship_dict.copy()
     ships_left = 2  # 7 is original value, this should be maybe like a global value, so it would be easier to change
     draw_table(table)
     while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
         print("Ships you can place: ", ships_left)
-        for ship in ship_dict:  # THINK ABOUT THIS A LITTLE BIT
-            if ship_dict[ship][1] > 0:
-                print('\nYou still got {} {} ({}) left!\n'.format(ship_dict[ship][1],
+        for ship in ship_dict_local:  # THINK ABOUT THIS A LITTLE BIT
+            if ship_dict_local[ship][1] > 0:
+                print('\nYou still got {} {} ({}) left!\n'.format(ship_dict_local[ship][1],
                                                                   ship,
-                                                                  'X' * ship_dict[ship][0]))
+                                                                  'X' * ship_dict_local[ship][0]))
                 current_ship = ship
-                ship_length = ship_dict[ship][0]
-                ship_dict[ship][1] -= 1
-                break  # https://www.youtube.com/watch?v=qSVJnvWd1K0
+                ship_length = ship_dict_local[ship][0]
+                ship_dict_local[ship][1] -= 1
+                break
 
-        let, num = target(ship_length, table)  # we place the first dot here
-        options = placement_options_check(let, num, ship_length, table)  # we check for options left and get a über-list
+        let, num = place_first_part_of_ship(ship_length, table)  # we place the first dot here
+        options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
         dir_list = []  # we will fill this list with option names (like 'UP', 'DOWN', etc)
         direction = ''  # we will ask the user to input something to this string
 
@@ -34,7 +34,7 @@ def place_ship(table, ship_dict, player):
             direction = input('> ')  # we prompt the user for one
 
         for i in options:  # we iterate through our über-list again
-            if direction == i[0]:  # we double check something we made sure before(!?)
+            if direction == i[0]:  # leaving this line out causes a strange bug, WTF
                 # here we check what is the input and draw a lot of X to that direction as long as ship-length(x)
                 # its redundant as hell of course
                 # a clever for-loop would be nice
@@ -64,7 +64,7 @@ def place_ship(table, ship_dict, player):
     return table
 
 
-def placement_options_check(let, num, ship_length, table):
+def check_placement_options(let, num, ship_length, table):
     x = ship_length - 1  # why? maybe cause we already place an X in target() ...
     options = []
 
@@ -126,14 +126,7 @@ def placement_options_check(let, num, ship_length, table):
     return options
 
 
-def reset_ship_dict():  # do we really need a function for this?
-    ship_dict["Destroyer"][1] = 3
-    ship_dict["Carrier"][1] = 1
-    ship_dict["Battleship"][1] = 1
-    ship_dict["Cruiser"][1] = 2
-
-
-def target(ship_length, table):  # we will need a more accurate name for this one
+def place_first_part_of_ship(ship_length, table):  # we will need a more accurate name for this one
     while True:  # we need to do this to let the user make mistakes
         print('Choose your starting coordinates!\n')  # we need a more user-friendly solution for this
         let = ''  # let my hand rot if I name a variable like this again
@@ -151,7 +144,7 @@ def target(ship_length, table):  # we will need a more accurate name for this on
         let = int(abc.index(let))
         num -= 1
 
-        options = placement_options_check(let, num, ship_length, table)  # here we do a doblue check
+        options = check_placement_options(let, num, ship_length, table)  # here we do a doblue check
 
         if table[num][let] != 'X' and len(options) >= 1:  # thats actually a pretty one
             table[num][let] = 'X'
