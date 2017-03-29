@@ -1,1 +1,8 @@
 Here we can write down our problems and questions, plus the answers later.
+1. in the battle function in the battle_func.py instead of printing a given
+    number of *s, we could set the width of the line and fill it in.
+2.  create a new file with the ascii arts only so thath the code looks cleaner
+3. simplify the draw_table function by adding variables to the condition.
+4. other minor func line 46: simplify justification with rjust and possibly
+rewrite it as a list comprehension
+5. 

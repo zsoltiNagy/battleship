@@ -4,9 +4,9 @@ from other_minor_func import *
 
 def battle(player, player_table, opponent_table):
     blank_page(player)
-    print(' ', '#'*30, '\nThis is the opponents table\n', '#'*29)
+    print(' ', '#' * 30, '\nThis is the opponents table\n', '#' * 29)
     draw_table(opponent_table, player)
-    print(' ', '#'*19, '\nThis your table\n', '#'*19)
+    print(' ', '#' * 19, '\nThis your table\n', '#' * 19)
     draw_table(player_table, player)
     shoot(opponent_table)
     draw_table(opponent_table, player)
@@ -14,7 +14,6 @@ def battle(player, player_table, opponent_table):
 
 
 def shoot(table):
-    global abc
     while True:
         print('Choose your shooting coordinates!\n')
         let = ''
@@ -47,4 +46,4 @@ def shoot(table):
 ~~~~~~~~~~~||~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"""
     elif table[num][let] == '~':
         table[num][let] = 'O'
-    print(pic)    
+    print(pic)
