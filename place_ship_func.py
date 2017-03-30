@@ -30,19 +30,19 @@ def place_ship(table, ship_dict, player):
         print('Which direction do you want to place your {}?\n'.format(current_ship))  # so we ask
         for i in options:  # we iterate through the options über-list we just got
             dir_list.append(i[0])  # we fill our empty list with valid input options
-            print(i[0], '\n')  # then we print them out one-by-one on a new line to guide the user
+            print(direction_keys[i[0]], '  ('.rjust(10-len(direction_keys[i[0]])), i[0], ')', '\n')
 
         while direction not in dir_list:  # till we get the right input
             direction = input('> ')  # we prompt the user for one
         for i in options:  # we iterate through our über-list again
             if direction == i[0]:  # leaving this line out causes a strange bug, WTF
-                if i[0] == 'UP':
+                if i[0] == 'w':
                     draw_ship(table, i[3], i[2], i[1], True)
-                if i[0] == 'DOWN':
+                if i[0] == 's':
                     draw_ship(table, i[2], i[3], i[1], True)
-                if i[0] == 'LEFT':
+                if i[0] == 'a':
                     draw_ship(table, i[3], i[2], i[1], False)
-                if i[0] == 'RIGHT':
+                if i[0] == 'd':
                     draw_ship(table, i[2], i[3], i[1], False)
                 draw_table(table)
         ships_left -= 1
@@ -54,7 +54,7 @@ def check_placement_options(let, num, ship_length, table):
     x = ship_length - 1
     options = []
 
-    # this is redundant as hell and a function nightmare
+    # this is redundant as hell and a to make a function out of it seems like a nightmare
     # UP
     up = False
     start = num - x
@@ -65,7 +65,7 @@ def check_placement_options(let, num, ship_length, table):
         if table[i][let] != '~':
             up = False
     if up:
-        options.append(['UP', let, end, start])
+        options.append(['w', let, end, start])
 
     # DOWN
     down = False
@@ -80,7 +80,7 @@ def check_placement_options(let, num, ship_length, table):
     except IndexError:
         pass
     if down:
-        options.append(['DOWN', let, start, end + 1])
+        options.append(['s', let, start, end + 1])
 
     # LEFT
     left = False
@@ -92,7 +92,7 @@ def check_placement_options(let, num, ship_length, table):
         if table[num][i] != '~':
             left = False
     if left:
-        options.append(['LEFT', num, end, start])
+        options.append(['a', num, end, start])
 
     # RIGHT
     right = False
@@ -107,20 +107,18 @@ def check_placement_options(let, num, ship_length, table):
     except IndexError:
         pass
     if right:
-        options.append(['RIGHT', num, start, end + 1])
+        options.append(['d', num, start, end + 1])
 
     return options
 
 
 def place_first_part_of_ship(ship_length, table):
     let, num = valid_input()
-
     let = int(abc.index(let))
     num -= 1
+    options = check_placement_options(let, num, ship_length, table)
 
-    options = check_placement_options(let, num, ship_length, table)  # here we do a doblue check
-
-    if table[num][let] != 'X' and len(options) >= 1:  # thats actually a pretty one
+    if table[num][let] != 'X' and len(options) >= 1:
         table[num][let] = 'X'
         draw_table(table)
         return let, num

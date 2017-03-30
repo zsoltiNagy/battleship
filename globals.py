@@ -18,6 +18,13 @@ ship_dict = {
     "Destroyer III": 2,
 }
 
+direction_keys = {
+    "w": 'UP',
+    "a": 'LEFT',
+    "s": 'DOWN',
+    "d": 'RIGHT'
+}
+
 
 ################
 # player names #
