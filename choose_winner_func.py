@@ -4,16 +4,18 @@ from other_minor_func import *
 
 def choose_winner(table_1, table_2):  # how can we make this smaller?
     print("\n" * 40)
-    print('\n{}: {}'.format(player_1, count_x(table_1)))
-    print('{}: {}'.format(player_2, count_x(table_2)))
+    print('\{}: {}'.format(player_1, count_x(table_1)).center(142, ' '))
+    print('\n')
+    print('{}: {}'.format(player_2, count_x(table_2)).center(142, ' '))
+    print('\n')
     if count_x(table_1) > count_x(table_2):
-        print('Player 1 ({}) won!'.format(player_1))
+        print('({}) won!'.format(player_1).center(142, ' '))
         export_score(player_1, count_x(table_1))
     elif count_x(table_1) < count_x(table_2):
-        print('Player 2 ({}) won!'.format(player_2))
+        print('({}) won!'.format(player_2).center(142, ' '))
         export_score(player_2, count_x(table_2))
     else:
-        print('Draw!')
+        print('Draw!'.center(142, ' '))
         export_score(player_1, count_x(table_1))
         export_score(player_2, count_x(table_2))
     import_highscores()
@@ -36,7 +38,13 @@ def import_highscores(filename="highscore.txt"):
     for line in content:
         line = line.strip('\n').split('~')
         highscore.append(line)
+<<<<<<< Updated upstream
     #print(highscore, type(highscore))
     print('HIGHSCORES')
     for i in highscore:
         print(i[0], i[1])
+=======
+    print(highscore, type(highscore))
+    for player_score in highscore:
+        print(player_score.center(142, ' '))
+>>>>>>> Stashed changes

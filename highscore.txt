@@ -1,6 +1,11 @@
 AI2~20
 AI2~18
 AI2~20
+<<<<<<< Updated upstream
 AI1~16
 AI2~21
 AI1~21
+=======
+Player1~18
+Player2~15
+>>>>>>> Stashed changes

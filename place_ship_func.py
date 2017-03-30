@@ -6,24 +6,29 @@ import random
 def place_ship(table, ship_dict, player, AI=False):
     if not AI:
         blank_page(player)
-        print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
+        print('#This is the ship placement phase for {}!#'.format(player).center(144, '#'))
+        print('\n')
     local_ship_dict = ship_dict.copy()
     ships_left = 7
     while ships_left > 0:
         if not AI:
-            print('\nThese ships are still in your pool:\n')
+            print('These ships are still in your pool: '.center(142, ' '))
+            print('\n')
             for ship in local_ship_dict:
-                print(ship.rjust(15), ('X' * local_ship_dict[ship]).rjust(10))
-            print("\n\t\tYou can still place {} of 'em.".format(ships_left))
+                print("{}{}{}".format(ship, '    ', 'X' * local_ship_dict[ship]).center(142, ' '))
+        print('\n')
+        print("You can still place {} of 'em.".format(ships_left).center(142, ' '))
         for ship in local_ship_dict:
             if not AI:
-                print('\t\tNow you have to place your {}'.format(ship))
+                print('\n')
+                print('Now you have to place your {}'.format(ship).center(142, ' '))
+                print('\n')
             current_ship = ship
             ship_length = local_ship_dict[ship]
             del local_ship_dict[ship]
             break
         if not AI:
-            input()
+            input('> '.rjust(70, ' '))
             draw_table(table)
 
         try:
@@ -34,17 +39,17 @@ def place_ship(table, ship_dict, player, AI=False):
         dir_list = []
         direction = ''
 
-        if not AI:
-            print('Which direction do you want to place your {}?\n'.format(current_ship))
+#         if not AI:
+#             print((direction_keys[i[0]] + '    ' + i[0]).center(142, ' '))
 
         for i in options:
             dir_list.append(i[0])
             if not AI:
-                print(direction_keys[i[0]], '  ('.rjust(10-len(direction_keys[i[0]])), i[0], ')', '\n')
+                print((direction_keys[i[0]] + '    ' + i[0]).center(142, ' '))
 
         if not AI:
             while direction not in dir_list:
-                direction = input('> ')
+                direction = input('> '.rjust(70, ' '))
         else:
             direction = random.choice(dir_list)
 
@@ -62,9 +67,9 @@ def place_ship(table, ship_dict, player, AI=False):
                     draw_table(table)
         ships_left -= 1
     if not AI:
-        input()
+        input('> '.rjust(70, ' '))
         draw_table(table)
-        input()
+        input('> '.rjust(70, ' '))
     return table
 
 
@@ -148,7 +153,9 @@ def place_first_part_of_ship(ship_length, table, AI=False):
         return let, num
     else:
         if not AI:
-            print('\nThere is not enough space for this ship...\n')
+            print('\n')
+            print('There is not enough space for this ship...'.center(142, ' '))
+            print('\n')
 
 
 def draw_ship(table, range_start, range_end, stable_coordinate, ver=True):

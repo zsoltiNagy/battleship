@@ -7,16 +7,16 @@ import random
 def battle(player, player_table, opponent_table, AI=False):
     if not AI:
         blank_page(player)
-        print("\nThis is the opponent's table\n".center(90, '#'))
+        print("######  This is the opponent's table  ######".center(142, ' '))
         draw_table(opponent_table, player)
-        print("\nThis is your table\n".center(80, '#'))
+        print("######  This is your table  ######".center(142, ' '))
         draw_table(player_table, player)
     shoot(opponent_table, player, AI)
-    print("\nThis is the opponent's table\n".center(90, '#'))
-    print('{} shot on this table.'.format(player))
+    print("######  This is the opponent's table  ######".center(142, ' '))
+    print('######  {} shot on this table.  ######'.format(player).center(142, ' '))
     draw_table(opponent_table, player)
     input()
-    blank_page(player)
+    # blank_page(player)
 
 
 def shoot(table, player, AI=False):
@@ -40,8 +40,8 @@ def shoot(table, player, AI=False):
     if table[num][let] == 'X':
         table[num][let] = 'H'
         if not check_neighbouring_coordinates(table, let, num):
-            print('You succesfully sunk an enemy ship!')
-            print(ship_hit_art)
+            print('You succesfully sunk an enemy ship!'.center(142, ' '))
+            print(ship_hit_art())
         if AI and check_neighbouring_coordinates(table, let, num):
             if player == 'AI1':
                 AI_1_next_target = possible_targets(num, let, table)
