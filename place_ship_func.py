@@ -26,7 +26,10 @@ def place_ship(table, ship_dict, player, AI=False):
             input()
         draw_table(table)
 
-        let, num = place_first_part_of_ship(ship_length, table, AI)  # we place the first dot here
+        try:
+            let, num = place_first_part_of_ship(ship_length, table, AI)  # we place the first dot here
+        except TypeError:
+            pass
         options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
         dir_list = []  # we will fill this list with option names (like 'UP', 'DOWN', etc)
         direction = ''  # we will ask the user to input something to this string

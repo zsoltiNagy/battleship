@@ -15,7 +15,7 @@ ship_dict = {
     "Cruiser II": 3,
     "Destroyer I": 2,
     "Destroyer II": 2,
-    "Destroyer III": 2,
+    "Destroyer III": 2
 }
 
 direction_keys = {
