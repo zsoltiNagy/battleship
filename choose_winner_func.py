@@ -36,6 +36,7 @@ def import_highscores(filename="highscore.txt"):
     for line in content:
         line = line.strip('\n').split('~')
         highscore.append(line)
-    print(highscore, type(highscore))
-    for player_score in highscore:
-        print(player_score)
+    #print(highscore, type(highscore))
+    print('HIGHSCORES')
+    for i in highscore:
+        print(i[0], i[1])
