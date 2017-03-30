@@ -15,8 +15,8 @@ def battle(player, player_table, opponent_table, AI=False):
     print("######  This is the opponent's table  ######".center(142, ' '))
     print('######  {} shot on this table.  ######'.format(player).center(142, ' '))
     draw_table(opponent_table, player)
-    input()
-    # blank_page(player)
+    input('> '.rjust(70, ' '))
+    blank_page(player)
 
 
 def shoot(table, player, AI=False):

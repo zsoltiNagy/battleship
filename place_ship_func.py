@@ -39,9 +39,6 @@ def place_ship(table, ship_dict, player, AI=False):
         dir_list = []
         direction = ''
 
-#         if not AI:
-#             print((direction_keys[i[0]] + '    ' + i[0]).center(142, ' '))
-
         for i in options:
             dir_list.append(i[0])
             if not AI:
@@ -77,7 +74,6 @@ def check_placement_options(let, num, ship_length, table):
     x = ship_length - 1
     options = []
 
-    # this is redundant as hell and a to make a function out of it seems like a nightmare
     # UP
     up = False
     start = num - x

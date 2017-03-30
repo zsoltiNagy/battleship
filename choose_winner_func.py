@@ -2,8 +2,8 @@ from globals import *
 from other_minor_func import *
 
 
-def choose_winner(table_1, table_2):  # how can we make this smaller?
-    print("\n" * 40)
+def choose_winner(table_1, table_2):
+    print("\n" * 40)input('> '.rjust(70, ' '))
     print('\{}: {}'.format(player_1, count_x(table_1)).center(142, ' '))
     print('\n')
     print('{}: {}'.format(player_2, count_x(table_2)).center(142, ' '))
@@ -38,13 +38,14 @@ def import_highscores(filename="highscore.txt"):
     for line in content:
         line = line.strip('\n').split('~')
         highscore.append(line)
-<<<<<<< Updated upstream
-    #print(highscore, type(highscore))
+
+
+<< << << < Updated upstream
     print('HIGHSCORES')
     for i in highscore:
         print(i[0], i[1])
-=======
+== == == =
     print(highscore, type(highscore))
     for player_score in highscore:
         print(player_score.center(142, ' '))
->>>>>>> Stashed changes
+>>>>>> > Stashed changes

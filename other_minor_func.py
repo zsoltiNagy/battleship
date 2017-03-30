@@ -3,7 +3,7 @@ from ASCII_art import blank_page_art
 import os
 
 
-def blank_page(player):  # we should replace this with a clear screen function
+def blank_page(player):
     os.system('clear')
     blank_page_art()
     c = ("\nThis is {}'s turn. \nPress any key to continue...\n".format(player))
