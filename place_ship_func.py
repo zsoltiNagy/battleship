@@ -7,22 +7,24 @@ def place_ship(table, ship_dict, player, AI=False):
     blank_page(player)
     print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
     local_ship_dict = ship_dict.copy()
-    ships_left = 2  # 7 is original value, this should be maybe like a global value, so it would be easier to change
+    ships_left = 7  # 7 is original value, this should be maybe like a global value, so it would be easier to change
     # draw_table(table)
     while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
-        print('\nThese ships are still in your pool:\n')
+        if not AI:
+            print('\nThese ships are still in your pool:\n')
+            for ship in local_ship_dict:
+                print(ship.rjust(15), ('X' * local_ship_dict[ship]).rjust(10))
+            print("\n\t\tYou can still place {} of 'em.".format(ships_left))
         for ship in local_ship_dict:
-            print(ship.rjust(15), ('X' * local_ship_dict[ship]).rjust(10))
-        print("\n\t\tYou can still place {} of 'em.".format(ships_left))
-        for ship in local_ship_dict:
-            print('\t\tNow you have to place your {}'.format(ship))
+            if not AI:
+                print('\t\tNow you have to place your {}'.format(ship))
             current_ship = ship
             ship_length = local_ship_dict[ship]
             del local_ship_dict[ship]
             break
         if not AI:
             input()
-            draw_table(table)
+        draw_table(table)
 
         let, num = place_first_part_of_ship(ship_length, table, AI)  # we place the first dot here
         options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
@@ -128,6 +130,7 @@ def place_first_part_of_ship(ship_length, table, AI=False):
     else:
         num = random.randint(0, 9)
         let = random.randint(0, 9)
+
     options = check_placement_options(let, num, ship_length, table)
 
     if table[num][let] != 'X' and len(options) >= 1:

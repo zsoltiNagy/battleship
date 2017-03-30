@@ -14,9 +14,9 @@ def game_engine():
     place_ship(table_1, ship_dict, player_1, AI_1)
     place_ship(table_2, ship_dict, player_2, AI_2)
     turn = 0
-    while turn < 3:
-        battle(player_1, table_1, table_2)
-        battle(player_2, table_2, table_1)
+    while turn < 10:
+        battle(player_1, table_1, table_2, AI_1)
+        battle(player_2, table_2, table_1, AI_2)
         turn += 1
     choose_winner(table_1, table_2)
 

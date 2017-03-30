@@ -1,25 +1,28 @@
 from globals import *
 from other_minor_func import *
 from ASCII_art import ship_hit_art
+import random
 
 
-def battle(player, player_table, opponent_table):
+def battle(player, player_table, opponent_table, AI=False):
     blank_page(player)
     print("\nThis is the opponent's table\n".center(90, '#'))
     draw_table(opponent_table, player)
     print("\nThis is your table\n".center(80, '#'))
     draw_table(player_table, player)
-    shoot(opponent_table)
+    shoot(opponent_table, AI)
     draw_table(opponent_table, player)
     input()
 
 
-def shoot(table):
-    let, num = valid_input()
-
-    let = int(abc.index(let))
-    num -= 1
-
+def shoot(table, AI=False):
+    if not AI:
+        let, num = valid_input()
+        let = int(abc.index(let))
+        num -= 1
+    else:
+        num = random.randint(0, 9)
+        let = random.randint(0, 9)
     print(let, num)
     if table[num][let] == 'X':
         table[num][let] = 'H'
