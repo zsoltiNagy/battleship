@@ -4,12 +4,12 @@ import random
 
 
 def place_ship(table, ship_dict, player, AI=False):
-    blank_page(player)
-    print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
+    if not AI:
+        blank_page(player)
+        print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
     local_ship_dict = ship_dict.copy()
-    ships_left = 7  # 7 is original value, this should be maybe like a global value, so it would be easier to change
-    # draw_table(table)
-    while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
+    ships_left = 7
+    while ships_left > 0:
         if not AI:
             print('\nThese ships are still in your pool:\n')
             for ship in local_ship_dict:
@@ -24,27 +24,32 @@ def place_ship(table, ship_dict, player, AI=False):
             break
         if not AI:
             input()
-        draw_table(table)
+            draw_table(table)
 
         try:
-            let, num = place_first_part_of_ship(ship_length, table, AI)  # we place the first dot here
+            let, num = place_first_part_of_ship(ship_length, table, AI)
         except TypeError:
             pass
-        options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
-        dir_list = []  # we will fill this list with option names (like 'UP', 'DOWN', etc)
-        direction = ''  # we will ask the user to input something to this string
+        options = check_placement_options(let, num, ship_length, table)
+        dir_list = []
+        direction = ''
 
-        print('Which direction do you want to place your {}?\n'.format(current_ship))  # so we ask
-        for i in options:  # we iterate through the options über-list we just got
-            dir_list.append(i[0])  # we fill our empty list with valid input options
-            print(direction_keys[i[0]], '  ('.rjust(10-len(direction_keys[i[0]])), i[0], ')', '\n')
         if not AI:
-            while direction not in dir_list:  # till we get the right input
-                direction = input('> ')  # we prompt the user for one
+            print('Which direction do you want to place your {}?\n'.format(current_ship))
+
+        for i in options:
+            dir_list.append(i[0])
+            if not AI:
+                print(direction_keys[i[0]], '  ('.rjust(10-len(direction_keys[i[0]])), i[0], ')', '\n')
+
+        if not AI:
+            while direction not in dir_list:
+                direction = input('> ')
         else:
             direction = random.choice(dir_list)
-        for i in options:  # we iterate through our über-list again
-            if direction == i[0]:  # leaving this line out causes a strange bug, WTF
+
+        for i in options:
+            if direction == i[0]:
                 if i[0] == 'w':
                     draw_ship(table, i[3], i[2], i[1], True)
                 if i[0] == 's':
@@ -58,8 +63,8 @@ def place_ship(table, ship_dict, player, AI=False):
         ships_left -= 1
     if not AI:
         input()
-    draw_table(table)
-    input()
+        draw_table(table)
+        input()
     return table
 
 
@@ -138,7 +143,8 @@ def place_first_part_of_ship(ship_length, table, AI=False):
 
     if table[num][let] != 'X' and len(options) >= 1:
         table[num][let] = 'X'
-        draw_table(table)
+        if not AI:
+            draw_table(table)
         return let, num
     else:
         if not AI:

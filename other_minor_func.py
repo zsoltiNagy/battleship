@@ -2,18 +2,17 @@ from globals import *
 from ASCII_art import blank_page_art
 
 
-def blank_page(player):  # we should replace this THING with the clear func
+def blank_page(player):  # we should replace this with a clear screen function
     print("\n" * 40)
     blank_page_art()
-    c = input("\nThis is {}'s turn. \nPress any key to continue...\n> ".format(player).center(40, 'w'))
-    print(c)
+    input("\nThis is {}'s turn. \nPress any key to continue...\n> ".format(player).center(40, 'w'))
     print("\n" * 40)
 
 
 def draw_table(table, *player):
     print_ship_pos = True
     try:
-        if player[0] == player_1 and table == table_2 or player[0] == player_2 and table == table_1:  # can we make this smaller?
+        if player[0] == player_1 and table == table_2 or player[0] == player_2 and table == table_1:
             print_ship_pos = False
     except IndexError:
         pass
@@ -21,18 +20,17 @@ def draw_table(table, *player):
     str_abc = ''
     str_abc = ' '.join(abc)
 
-    # print('      ', str_abc, '\n', ' ' * 50)
     print("{}\n".format(str_abc).center(142, ' '))
 
     str_table_list = []
 
-    for i in table:  # we should name this more accuretally
+    for i in table:
         str_table = ''.join(i)
         str_table = list(str_table)
         for j in str_table:
-            if not print_ship_pos and j == 'X':  # thats how wo make X disappear
+            if not print_ship_pos and j == 'X':
                 str_table[str_table.index(j)] = '~'
-        str_table = ' '.join(str_table)  # to make our output nice
+        str_table = ' '.join(str_table)
         str_table_list.append(str_table)
 
     width = 70
