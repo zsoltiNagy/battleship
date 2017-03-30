@@ -21,7 +21,8 @@ def draw_table(table, *player):
     str_abc = ''
     str_abc = ' '.join(abc)
 
-    print('      ', str_abc, '\n', ' ' * 50)
+    # print('      ', str_abc, '\n', ' ' * 50)
+    print("{}\n".format(str_abc).center(142, ' '))
 
     str_table_list = []
 
@@ -34,9 +35,11 @@ def draw_table(table, *player):
         str_table = ' '.join(str_table)  # to make our output nice
         str_table_list.append(str_table)
 
-    width = 80
+    width = 70
     for i in range(1, 11):
-        print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
+        # print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
+        # print("{}{}{}".format(i, ' ', str_table_list[i - 1]).center(142, ' '))
+        print("{0:>{3}{1}{{3}:>2}".format(i, ' ', str_table_list[i - 1], width))
 
 
 def valid_input():
