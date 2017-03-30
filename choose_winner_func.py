@@ -38,4 +38,4 @@ def import_highscores(filename="highscore.txt"):
         highscore.append(line)
     print(highscore, type(highscore))
     for player_score in highscore:
-        
+        print(player_score)
