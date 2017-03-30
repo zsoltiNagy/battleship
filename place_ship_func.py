@@ -4,17 +4,17 @@ from other_minor_func import *
 
 def place_ship(table, ship_dict, player):
     blank_page(player)
-    print('\nThis is the ship placement phase for {}!\n'.format(player).center(80, '#'))
+    print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
     local_ship_dict = ship_dict.copy()
     ships_left = 2  # 7 is original value, this should be maybe like a global value, so it would be easier to change
     # draw_table(table)
     while ships_left > 0:  # this is biggest while-loop I ever seen, mobydick
-        print('These ships are still in your pool:')
+        print('\nThese ships are still in your pool:\n')
         for ship in local_ship_dict:
-            print(ship, 'X' * local_ship_dict[ship])
-        print("\nYou can still place {} of 'em.".format(ships_left))
+            print(ship.rjust(15), ('X' * local_ship_dict[ship]).rjust(10))
+        print("\n\t\tYou can still place {} of 'em.".format(ships_left))
         for ship in local_ship_dict:
-            print('Now you have to place your {}'.format(ship))
+            print('\t\tNow you have to place your {}'.format(ship))
             current_ship = ship
             ship_length = local_ship_dict[ship]
             del local_ship_dict[ship]

@@ -11,11 +11,11 @@ table_2 = []
 ship_dict = {
     "Carrier": 5,
     "Battleship": 4,
-    "Cruiser_1": 3,
-    "Cruiser_2": 3,
-    "Destroyer_1": 2,
-    "Destroyer_2": 2,
-    "Destroyer_3": 2,
+    "Cruiser I": 3,
+    "Cruiser II": 3,
+    "Destroyer I": 2,
+    "Destroyer II": 2,
+    "Destroyer III": 2,
 }
 
 
