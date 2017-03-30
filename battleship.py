@@ -11,8 +11,8 @@ from ASCII_art import *
 
 def game_engine():
     intro()
-    place_ship(table_1, ship_dict, player_1)
-    place_ship(table_2, ship_dict, player_2)
+    place_ship(table_1, ship_dict, player_1, AI_1)
+    place_ship(table_2, ship_dict, player_2, AI_2)
     turn = 0
     while turn < 3:
         battle(player_1, table_1, table_2)

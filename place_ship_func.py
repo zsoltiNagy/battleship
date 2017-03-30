@@ -1,8 +1,9 @@
 from globals import *
 from other_minor_func import *
+import random
 
 
-def place_ship(table, ship_dict, player):
+def place_ship(table, ship_dict, player, AI=False):
     blank_page(player)
     print('\n#This is the ship placement phase for {}!#\n'.format(player).center(142, '#'))
     local_ship_dict = ship_dict.copy()
@@ -19,10 +20,11 @@ def place_ship(table, ship_dict, player):
             ship_length = local_ship_dict[ship]
             del local_ship_dict[ship]
             break
-        input()
-        draw_table(table)
+        if not AI:
+            input()
+            draw_table(table)
 
-        let, num = place_first_part_of_ship(ship_length, table)  # we place the first dot here
+        let, num = place_first_part_of_ship(ship_length, table, AI)  # we place the first dot here
         options = check_placement_options(let, num, ship_length, table)  # we check for options left and get a über-list
         dir_list = []  # we will fill this list with option names (like 'UP', 'DOWN', etc)
         direction = ''  # we will ask the user to input something to this string
@@ -31,9 +33,11 @@ def place_ship(table, ship_dict, player):
         for i in options:  # we iterate through the options über-list we just got
             dir_list.append(i[0])  # we fill our empty list with valid input options
             print(direction_keys[i[0]], '  ('.rjust(10-len(direction_keys[i[0]])), i[0], ')', '\n')
-
-        while direction not in dir_list:  # till we get the right input
-            direction = input('> ')  # we prompt the user for one
+        if not AI:
+            while direction not in dir_list:  # till we get the right input
+                direction = input('> ')  # we prompt the user for one
+        else:
+            direction = random.choice(dir_list)
         for i in options:  # we iterate through our über-list again
             if direction == i[0]:  # leaving this line out causes a strange bug, WTF
                 if i[0] == 'w':
@@ -44,8 +48,12 @@ def place_ship(table, ship_dict, player):
                     draw_ship(table, i[3], i[2], i[1], False)
                 if i[0] == 'd':
                     draw_ship(table, i[2], i[3], i[1], False)
-                draw_table(table)
+                if not AI:
+                    draw_table(table)
         ships_left -= 1
+    if not AI:
+        input()
+    draw_table(table)
     input()
     return table
 
@@ -112,10 +120,14 @@ def check_placement_options(let, num, ship_length, table):
     return options
 
 
-def place_first_part_of_ship(ship_length, table):
-    let, num = valid_input()
-    let = int(abc.index(let))
-    num -= 1
+def place_first_part_of_ship(ship_length, table, AI=False):
+    if not AI:
+        let, num = valid_input()
+        let = int(abc.index(let))
+        num -= 1
+    else:
+        num = random.randint(0, 9)
+        let = random.randint(0, 9)
     options = check_placement_options(let, num, ship_length, table)
 
     if table[num][let] != 'X' and len(options) >= 1:
@@ -123,7 +135,8 @@ def place_first_part_of_ship(ship_length, table):
         draw_table(table)
         return let, num
     else:
-        print('\nThere is not enough space for this ship...\n')
+        if not AI:
+            print('\nThere is not enough space for this ship...\n')
 
 
 def draw_ship(table, range_start, range_end, stable_coordinate, ver=True):

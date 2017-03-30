@@ -25,13 +25,19 @@ direction_keys = {
     "d": 'RIGHT'
 }
 
-
+AI_1 = False
+AI_2 = False
 ################
 # player names #
 ################
 if len(sys.argv) == 3:
     player_1 = sys.argv[1]
+    if sys.argv[1] == 'AI':
+        AI_1 = True
     player_2 = sys.argv[2]
+    if sys.argv[2] == 'AI':
+        AI_2 = True
 else:
     player_1 = 'Player1'
     player_2 = 'Player2'
+
