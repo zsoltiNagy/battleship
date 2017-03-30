@@ -113,31 +113,19 @@ def check_placement_options(let, num, ship_length, table):
 
 
 def place_first_part_of_ship(ship_length, table):
-    while True:
-        print('Choose your starting coordinates!\n')
-        let = ''
-        while let not in abc:
-            let = input('Vertical position (A-J): ')
+    let, num = valid_input()
 
-        num = ''
-        while num not in range(1, 11):
-            num = input('Horizontal position (1-10): ')
-            try:  # this and the while-loop its in just do the same, right?
-                num = int(num)
-            except ValueError:
-                pass
+    let = int(abc.index(let))
+    num -= 1
 
-        let = int(abc.index(let))
-        num -= 1
+    options = check_placement_options(let, num, ship_length, table)  # here we do a doblue check
 
-        options = check_placement_options(let, num, ship_length, table)  # here we do a doblue check
-
-        if table[num][let] != 'X' and len(options) >= 1:  # thats actually a pretty one
-            table[num][let] = 'X'
-            draw_table(table)
-            return let, num
-        else:
-            print('\nThere is not enough space for this ship...\n')
+    if table[num][let] != 'X' and len(options) >= 1:  # thats actually a pretty one
+        table[num][let] = 'X'
+        draw_table(table)
+        return let, num
+    else:
+        print('\nThere is not enough space for this ship...\n')
 
 
 def draw_ship(table, range_start, range_end, stable_coordinate, ver=True):

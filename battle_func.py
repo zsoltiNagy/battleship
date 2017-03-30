@@ -15,21 +15,7 @@ def battle(player, player_table, opponent_table):
 
 
 def shoot(table):
-    while True:
-        print('Choose your shooting coordinates!\n')
-        let = ''
-        while let not in abc:
-            let = input('Vertical position (A-J): ')
-
-        num = ''
-        while num not in range(1, 11):
-            num = input('Horizontal position (1-10): ')
-            try:
-                num = int(num)
-                break
-            except ValueError:
-                pass
-        break
+    let, num = valid_input()
 
     let = int(abc.index(let))
     num -= 1
@@ -46,15 +32,15 @@ def shoot(table):
 
 def check_neighbouring_coordinates(table, let, num):
     if let > 0:
-        if table[num][let-1] == 'X':
+        if table[num][let - 1] == 'X':
             return True
     if let < 9:
-        if table[num][let+1] == 'X':
+        if table[num][let + 1] == 'X':
             return True
     if num > 0:
-        if table[num-1][let] == 'X':
+        if table[num - 1][let] == 'X':
             return True
     if let > 0:
-        if table[num+1][let] == 'X':
+        if table[num + 1][let] == 'X':
             return True
     return False
