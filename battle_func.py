@@ -37,7 +37,24 @@ def shoot(table):
     print(let, num)
     if table[num][let] == 'X':
         table[num][let] = 'H'
-        ship_hit_art()
+        if not check_neighbouring_coordinates(table, let, num):
+            print('You succesfully sunk an enemy ship!')
+            print(ship_hit_art)
     elif table[num][let] == '~':
         table[num][let] = 'O'
-    print(ship_hit_art)
+
+
+def check_neighbouring_coordinates(table, let, num):
+    if let > 0:
+        if table[num][let-1] == 'X':
+            return True
+    if let < 9:
+        if table[num][let+1] == 'X':
+            return True
+    if num > 0:
+        if table[num-1][let] == 'X':
+            return True
+    if let > 0:
+        if table[num+1][let] == 'X':
+            return True
+    return False
