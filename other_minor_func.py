@@ -37,9 +37,9 @@ def draw_table(table, *player):
 
     width = 70
     for i in range(1, 11):
-        # print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
+        print("{:>3}{:>3}{:>3}".format(i, ' ', str_table_list[i - 1], width))
         # print("{}{}{}".format(i, ' ', str_table_list[i - 1]).center(142, ' '))
-        print("{0:>{3}{1}{{3}:>2}".format(i, ' ', str_table_list[i - 1], width))
+        # print("{0:>{3}{1}{{3}:>2}".format(i, ' ', str_table_list[i - 1], width))
 
 
 def valid_input():
