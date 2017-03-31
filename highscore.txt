@@ -7,3 +7,6 @@ AI1~21
 Player1~18
 Player2~15
 AI2~17
+AI1~16
+AI2~19
+AI2~16
